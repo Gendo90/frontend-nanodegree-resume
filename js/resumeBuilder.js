@@ -1,9 +1,41 @@
 /*
 This is empty on purpose! Your code to build the resume will go here.
  */
+
+//
+function formalSchool(name, location, degree, majors, dates, url) {
+  this.name = name;
+  this.location = location;
+  this.degree = degree;
+  this.majors = majors;
+  this.dates = dates;
+  this.url = url||"";
+}
+
+college = new formalSchool("University of Southern California", "Los Angeles, CA",
+"Bachelor of Science", ["Aerospace Engineering"], "2008-2013");
+
+graduate_school = new formalSchool("University of Southern California", "Los Angeles, CA",
+"Master of Science", ["Mechanical Engineering"], "2013");
+
+
+
+function onlineSchool(title, school, dates, url) {
+  this.title = title;
+  this.school = school;
+  this.dates = dates;
+  this.url = url;
+}
+
+online_education = new onlineSchool("Introduction to Programming Nanodegree",
+"Udacity", "2018", "www.udacity.com")
+
+
+
+
 model ={
   //work sub-object for the model, contains personal info
-  work: {
+  bio: {
     name: "Patrick Gendotti",
     role: "Engineer",
     contacts: {
@@ -20,17 +52,17 @@ model ={
 
   },
 
-  projects: {
-
-
-  },
-
   education: {
+    schools: [college, graduate_school],
+    onlineCourses: [online_education]
+  },
+
+  work: {
 
 
   },
 
-  bio: {
+  projects: {
 
 
   }
@@ -39,24 +71,85 @@ model ={
 
 
 octopus = {
-  work: model.work,
-  updateWorkHTMLStrings: function(){
+  bio: model.bio,
+
+  //Updates the bio HTML strings so the correct information from the model is included
+  updateBioHTMLStrings: function(){
     //setup Header HTML strings
-    HTMLheaderName = HTMLheaderName.replace("%data%", octopus.work.name);
-    HTMLheaderRole = HTMLheaderRole.replace("%data%", octopus.work.role);
+    HTMLheaderName = HTMLheaderName.replace("%data%", octopus.bio.name);
+    HTMLheaderRole = HTMLheaderRole.replace("%data%", octopus.bio.role);
 
     //setup topContacts HTML strings
-    HTMLmobile = HTMLmobile.replace("%data%", octopus.work.contacts.mobile);
-    HTMLemail = HTMLemail.replace("%data%", octopus.work.contacts.email);
-    HTMLtwitter = (this.work.contacts.twitter !== "") ? HTMLtwitter.replace("%data%", octopus.work.contacts.twitter):null;
-    HTMLgithub = HTMLgithub.replace("%data%", octopus.work.contacts.github);
+    HTMLmobile = HTMLmobile.replace("%data%", octopus.bio.contacts.mobile);
+    HTMLemail = HTMLemail.replace("%data%", octopus.bio.contacts.email);
+    HTMLtwitter = (this.bio.contacts.twitter !== "") ? HTMLtwitter.replace("%data%", octopus.bio.contacts.twitter):null;
+    HTMLgithub = HTMLgithub.replace("%data%", octopus.bio.contacts.github);
+    HTMLlocation = HTMLlocation.replace("%data%", octopus.bio.contacts.location);
+
+    //setup bio picture! Must be class-> "biopic"
+    HTMLbioPic = HTMLbioPic.replace("%data%", octopus.bio.biopic);
+
+    //setup welcome message!
+    HTMLwelcomeMsg = HTMLwelcomeMsg.replace("%data%", octopus.bio.welcomeMessage);
+
+    //setup skills from array!
+    var HTMLskills_update = HTMLskills;
+    this.bio.skills.forEach(function(item, index) {
+      if(index===0){
+        HTMLskills_update = HTMLskills.replace("%data%", item);
+      }
+      else{
+        HTMLskills_update += HTMLskills.replace("%data%", item);
+      }
+    })
+    HTMLskills = HTMLskills_update;
+  },
+
+  //creates an "education" object identical to the model's one in the octopus!
+  education: model.education,
+
+  //Updates the education HTML strings so the correct information from the model is included
+  updateEducationHTMLStrings: function(){
+
+    //octopus.education = model.education;
+
+
+    let school_strings = [];
+      if(octopus.education.schools.length !== 0){
+          $.each(octopus.education.schools, function(index, item) {
+            let HTMLschoolName_current = HTMLschoolName.replace("%data%", item.name);
+            let HTMLschoolDegree_current = HTMLschoolDegree.replace("%data%", item.degree);
+            let HTMLschoolDates_current = HTMLschoolDates.replace("%data%", item.dates);
+            let HTMLschoolLocation_current = HTMLschoolLocation.replace("%data%", item.location);
+            let HTMLschoolMajor_current = HTMLschoolMajor.replace("%data%", item.majors[0]); //update to cases with more than one major later!!!!
+
+            school_strings.push(HTMLschoolName_current + HTMLschoolDegree_current + HTMLschoolDates_current + HTMLschoolLocation_current + HTMLschoolMajor_current);
+          });
+        }
+  //console.log(school_strings);
+  return school_strings;
+
+    /*this.education.schools.forEach(function(element) {
+      console.log(element);
+
+    });*/
+
+
+
+    /*var HTMLonlineClasses = '<h3>Online Classes</h3>';
+    var HTMLonlineTitle = '<a href="#">%data%';
+    var HTMLonlineSchool = ' - %data%</a>';
+    var HTMLonlineDates = '<div class="date-text">%data%</div>';
+    var HTMLonlineURL = '<br><a href="#">%data%</a>';*/
+
   }
 };
 
 
 
 view = {
-  renderWork: function(){
+  //makes the bio section of the resume visible on the webpage
+  renderBio: function(){
     //sets up the Header
     $("#header").prepend(HTMLheaderRole);
     $("#header").prepend(HTMLheaderName);
@@ -66,29 +159,43 @@ view = {
     $("#topContacts").append(HTMLemail);
     $("#topContacts").append(HTMLtwitter);
     $("#topContacts").append(HTMLgithub);
+    $("#topContacts").append(HTMLlocation);
+
+    //add bio picture
+    $("#header").append(HTMLbioPic);
+
+    //add welcome message
+    $("#header").append(HTMLwelcomeMsg);
+
+    //add skills to header
+    $("#header").append(HTMLskillsStart);
+    $("#header").append(HTMLskills);
+
+  },
+
+  //makes the education section of the resume visible on the webpage
+  renderEducation: function(list) {
+    $("#education").append(HTMLschoolStart);
+    $.each(list, function (index, item) {
+      $("#education").append(item);
+  })
   }
 };
 
-octopus.updateWorkHTMLStrings();
-view.renderWork();
+octopus.updateBioHTMLStrings();
+view.renderBio();
+let name_list = octopus.updateEducationHTMLStrings();
+view.renderEducation(name_list);
 
 
 /*
 
 
 var HTMLcontactGeneric = '<li class="flex-item"><span class="orange-text">%contact%</span><span class="white-text">%data%</span></li>';
-var HTMLmobile = '<li class="flex-item"><span class="orange-text">mobile</span><span class="white-text">%data%</span></li>';
-var HTMLemail = '<li class="flex-item"><span class="orange-text">email</span><span class="white-text">%data%</span></li>';
-var HTMLtwitter = '<li class="flex-item"><span class="orange-text">twitter</span><span class="white-text">%data%</span></li>';
-var HTMLgithub = '<li class="flex-item"><span class="orange-text">github</span><span class="white-text">%data%</span></li>';
+
 var HTMLblog = '<li class="flex-item"><span class="orange-text">blog</span><span class="white-text">%data%</span></li>';
-var HTMLlocation = '<li class="flex-item"><span class="orange-text">location</span><span class="white-text">%data%</span></li>';
 
-var HTMLbioPic = '<img src="%data%" class="biopic">';
-var HTMLwelcomeMsg = '<span class="welcome-message">%data%</span>';
 
-var HTMLskillsStart = '<h3 id="skills-h3">Skills at a Glance:</h3><ul id="skills" class="flex-column"></ul>';
-var HTMLskills = '<li class="flex-item"><span class="white-text">%data%</span></li>';
 
 
 
