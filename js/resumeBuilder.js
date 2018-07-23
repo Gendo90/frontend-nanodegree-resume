@@ -13,10 +13,10 @@ function formalSchool(name, location, degree, majors, dates, url) {
 }
 
 college = new formalSchool("University of Southern California", "Los Angeles, CA",
-"Bachelor of Science", ["Aerospace Engineering"], "2008-2013");
+"Bachelor of Science", ["Aerospace Engineering"], "2008-2013", "https://www.usc.edu/");
 
 graduate_school = new formalSchool("University of Southern California", "Los Angeles, CA",
-"Master of Science", ["Mechanical Engineering"], "2013");
+"Master of Science", ["Mechanical Engineering"], "2013", "https://www.usc.edu/");
 
 
 
@@ -28,7 +28,7 @@ function onlineSchool(title, school, dates, url) {
 }
 
 online_education = new onlineSchool("Introduction to Programming Nanodegree",
-"Udacity", "2018", "www.udacity.com")
+"Udacity", "2018", "https://www.udacity.com/course/intro-to-programming-nanodegree--nd000")
 
 
 
@@ -109,15 +109,13 @@ octopus = {
   education: model.education,
 
   //Updates the education HTML strings so the correct information from the model is included
-  updateEducationHTMLStrings: function(){
-
-    //octopus.education = model.education;
-
+  updateFormalEducationHTMLStrings: function(){
 
     let school_strings = [];
       if(octopus.education.schools.length !== 0){
           $.each(octopus.education.schools, function(index, item) {
             let HTMLschoolName_current = HTMLschoolName.replace("%data%", item.name);
+            HTMLschoolName_current = item.url !=="" ? HTMLschoolName_current.replace("#", item.url):HTMLschoolName_current;
             let HTMLschoolDegree_current = HTMLschoolDegree.replace("%data%", item.degree);
             let HTMLschoolDates_current = HTMLschoolDates.replace("%data%", item.dates);
             let HTMLschoolLocation_current = HTMLschoolLocation.replace("%data%", item.location);
@@ -126,22 +124,28 @@ octopus = {
             school_strings.push(HTMLschoolName_current + HTMLschoolDegree_current + HTMLschoolDates_current + HTMLschoolLocation_current + HTMLschoolMajor_current);
           });
         }
-  //console.log(school_strings);
   return school_strings;
+},
 
-    /*this.education.schools.forEach(function(element) {
-      console.log(element);
+updateOnlineEducationHTMLStrings: function() {
+  /*
+  var HTMLonlineTitle = '<a href="#">%data%';
+  var HTMLonlineSchool = ' - %data%</a>';
+  var HTMLonlineDates = '<div class="date-text">%data%</div>';
+  var HTMLonlineURL = '<br><a href="#">%data%</a>';*/
 
-    });*/
+  let school_strings = [];
 
+  $.each(octopus.education.onlineCourses, function(index, item) {
+    let HTMLonlineTitle_current = HTMLonlineTitle.replace("%data%", item.title);
+    let HTMLonlineSchool_current = HTMLonlineSchool.replace("%data%", item.school);
+    let HTMLonlineDates_current = HTMLonlineDates.replace("%data%", item.dates);
+    let HTMLonlineURL_current = HTMLonlineURL.replace("%data%", item.url);
+    HTMLonlineURL_current = HTMLonlineURL_current.replace("#", item.url);
 
-
-    /*var HTMLonlineClasses = '<h3>Online Classes</h3>';
-    var HTMLonlineTitle = '<a href="#">%data%';
-    var HTMLonlineSchool = ' - %data%</a>';
-    var HTMLonlineDates = '<div class="date-text">%data%</div>';
-    var HTMLonlineURL = '<br><a href="#">%data%</a>';*/
-
+    school_strings.push(HTMLonlineTitle_current+HTMLonlineSchool_current+HTMLonlineDates_current+HTMLonlineURL_current);
+    });
+    return school_strings;
   }
 };
 
@@ -174,19 +178,32 @@ view = {
   },
 
   //makes the education section of the resume visible on the webpage
-  renderEducation: function(list) {
+  renderEducation: function(list, online_programs) {
+    //Header for the education section added here:
     $("#education").append(HTMLschoolStart);
+    //iterate through the list of formal schools one has attended and add to webpage
     $.each(list, function (index, item) {
-      $("#education").append(item);
+      $(".education-entry").append(item);
+    })
+
+
+    //adds the online education section to the Education part of the resume
+    //div added so that the online courses are separate from the formal education programs
+    $("#education").append(HTMLonlineClasses + "<div class=education-entry></div>");
+    //iterate through the list of formal schools one has attended and add to webpage
+    $.each(online_programs, function (index, item) {
+      $(".education-entry").append(item);
   })
+
+
   }
 };
 
 octopus.updateBioHTMLStrings();
 view.renderBio();
-let name_list = octopus.updateEducationHTMLStrings();
-view.renderEducation(name_list);
-
+let name_list = octopus.updateFormalEducationHTMLStrings();
+let online_list = octopus.updateOnlineEducationHTMLStrings();
+view.renderEducation(name_list, online_list);
 
 /*
 
