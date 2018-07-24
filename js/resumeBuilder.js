@@ -54,7 +54,10 @@ function completeProjects(title, dates, description, images){
   this.images = images;
 }
 
-
+sqlProject = new completeProjects("Newspaper Database Query Project", "04/18",
+"Queried a fictional newspaper website's Linux server database using PostgreSQL and a Python script to "
++"determine the most popular authors and articles on the site, and to determine days when "
++"the site had a high error rate when loading.", ["C:/Users/PGendotti/Documents/Hired/Portfolio Images/Newspaper_DB_Query.png"])
 
 
 
@@ -88,7 +91,7 @@ model ={
   },
 
   projects: {
-    projects: []
+    projects: [sqlProject]
   }
 };
 
@@ -170,9 +173,7 @@ updateOnlineEducationHTMLStrings: function() {
   work: model.work,
 
 updateJobHTMLStrings: function() {
-
   let work_strings = [];
-
 
   $.each(octopus.work.jobs, function(index, item) {
     let HTMLworkEmployer_current = HTMLworkEmployer.replace("%data%", item.employer);
@@ -185,16 +186,37 @@ updateJobHTMLStrings: function() {
       +HTMLworkDates_current+HTMLworkLocation_current+HTMLworkDescription_current);
     });
   return work_strings;
-  /*
-  var HTMLworkStart = '<div class="work-entry"></div>';
-  var HTMLworkEmployer = '<a href="#">%data%';
-  var HTMLworkTitle = ' - %data%</a>';
-  var HTMLworkDates = '<div class="date-text">%data%</div>';
-  var HTMLworkLocation = '<div class="location-text">%data%</div>';
-  var HTMLworkDescription = '<p><br>%data%</p>';
-  */
+},
 
-}
+ projects: model.projects,
+
+ updateProjectsHTMLStrings: function() {
+   let project_strings = [];
+
+
+   $.each(octopus.projects.projects, function(index, item) {
+     let HTMLprojectTitle_current = HTMLprojectTitle.replace("%data%", item.title);
+     let HTMLprojectDates_current = HTMLprojectDates.replace("%data%", item.dates);
+     let HTMLprojectDescription_current = HTMLprojectDescription.replace("%data%", item.description);
+
+     let HTMLprojectImage_current = ""
+     $.each(this.images, function(index, item){
+       HTMLprojectImage_current += HTMLprojectImage.replace("%data%", item); //should add multiple images... TEST!!!
+     });
+
+     project_strings.push(HTMLprojectTitle_current+HTMLprojectDates_current
+       +HTMLprojectDescription_current+HTMLprojectImage_current);
+     });
+   return project_strings;
+
+
+   /*
+   var HTMLprojectTitle = '<a href="#">%data%</a>';
+   var HTMLprojectDates = '<div class="date-text">%data%</div>';
+   var HTMLprojectDescription = '<p><br>%data%</p>';
+   var HTMLprojectImage = '<img src="%data%">';
+   */
+ }
 };
 
 
@@ -234,7 +256,6 @@ view = {
       $(".education-entry").append(item);
     })
 
-
     //adds the online education section to the Education part of the resume
     //div added so that the online courses are separate from the formal education programs
     $("#education").append(HTMLonlineClasses + "<div class=education-entry></div>");
@@ -243,17 +264,25 @@ view = {
       $(".education-entry").append(item);
   })},
 
+  //makes the work section of the resume visible on the webpage
   renderWork: function(input_list) {
     //setup the header for the WORK section
     $("#workExperience").append(HTMLworkStart);
 
-    console.log(input_list);
-
     //iterate through the list of jobs worked and add to webpage
     $.each(input_list, function (index, item) {
       $(".work-entry").append(item);
-    })
-  }
+    })},
+
+  //makes the projects section of the resume visible on the webpage
+  renderProjects: function(input_list) {
+    //setup the header for the PROJECTS section
+    $("#projects").append(HTMLprojectStart);
+
+    //iterate through the list of jobs worked and add to webpage
+    $.each(input_list, function (index, item) {
+      $(".project-entry").append(item);
+    })}
 };
 
 octopus.updateBioHTMLStrings();
@@ -263,24 +292,14 @@ let online_list = octopus.updateOnlineEducationHTMLStrings();
 view.renderEducation(name_list, online_list);
 let workList = octopus.updateJobHTMLStrings();
 view.renderWork(workList);
-
+let projList = octopus.updateProjectsHTMLStrings();
+view.renderProjects(projList);
 /*
 
 
 var HTMLcontactGeneric = '<li class="flex-item"><span class="orange-text">%contact%</span><span class="white-text">%data%</span></li>';
 
 var HTMLblog = '<li class="flex-item"><span class="orange-text">blog</span><span class="white-text">%data%</span></li>';
-
-
-
-
-
-var HTMLworkStart = '<div class="work-entry"></div>';
-var HTMLworkEmployer = '<a href="#">%data%';
-var HTMLworkTitle = ' - %data%</a>';
-var HTMLworkDates = '<div class="date-text">%data%</div>';
-var HTMLworkLocation = '<div class="location-text">%data%</div>';
-var HTMLworkDescription = '<p><br>%data%</p>';
 
 
 
