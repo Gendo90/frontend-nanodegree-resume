@@ -32,6 +32,32 @@ online_education = new onlineSchool("Introduction to Programming Nanodegree",
 
 
 
+function heldJobs(employer, title, location, dates, description) {
+  this.employer = employer;
+  this.title = title;
+  this.location = location;
+  this.dates = dates;
+  this.description = description;
+}
+
+last_job = new heldJobs("Stanford Healthcare", "Project Engineer/Drafter", "Menlo Park, CA",
+"01/2018-03/18", "Inspected piping at the main Stanford Hospital and created as-built drawings.");
+
+law_office = new heldJobs("Law Offices of Diana Dean-Gendotti", "Legal Assistant", "Los Altos, CA",
+"08/2018-01/18", "Helped check and prepare legal documents for estate planning meetings; performed various administrative tasks.");
+
+
+function completeProjects(title, dates, description, images){
+  this.title = title;
+  this.dates = dates;
+  this.description = description;
+  this.images = images;
+}
+
+
+
+
+
 
 model ={
   //work sub-object for the model, contains personal info
@@ -58,13 +84,11 @@ model ={
   },
 
   work: {
-
-
+    jobs: [last_job, law_office]
   },
 
   projects: {
-
-
+    projects: []
   }
 };
 
@@ -128,12 +152,6 @@ octopus = {
 },
 
 updateOnlineEducationHTMLStrings: function() {
-  /*
-  var HTMLonlineTitle = '<a href="#">%data%';
-  var HTMLonlineSchool = ' - %data%</a>';
-  var HTMLonlineDates = '<div class="date-text">%data%</div>';
-  var HTMLonlineURL = '<br><a href="#">%data%</a>';*/
-
   let school_strings = [];
 
   $.each(octopus.education.onlineCourses, function(index, item) {
@@ -146,7 +164,37 @@ updateOnlineEducationHTMLStrings: function() {
     school_strings.push(HTMLonlineTitle_current+HTMLonlineSchool_current+HTMLonlineDates_current+HTMLonlineURL_current);
     });
     return school_strings;
-  }
+  },
+
+  //get work info from the model to use within the octopus!
+  work: model.work,
+
+updateJobHTMLStrings: function() {
+
+  let work_strings = [];
+
+
+  $.each(octopus.work.jobs, function(index, item) {
+    let HTMLworkEmployer_current = HTMLworkEmployer.replace("%data%", item.employer);
+    let HTMLworkTitle_current = HTMLworkTitle.replace("%data%", item.title);
+    let HTMLworkDates_current = HTMLworkDates.replace("%data%", item.dates);
+    let HTMLworkLocation_current = HTMLworkLocation.replace("%data%", item.location);
+    let HTMLworkDescription_current = HTMLworkDescription.replace("%data%", item.description);
+
+    work_strings.push(HTMLworkEmployer_current+HTMLworkTitle_current
+      +HTMLworkDates_current+HTMLworkLocation_current+HTMLworkDescription_current);
+    });
+  return work_strings;
+  /*
+  var HTMLworkStart = '<div class="work-entry"></div>';
+  var HTMLworkEmployer = '<a href="#">%data%';
+  var HTMLworkTitle = ' - %data%</a>';
+  var HTMLworkDates = '<div class="date-text">%data%</div>';
+  var HTMLworkLocation = '<div class="location-text">%data%</div>';
+  var HTMLworkDescription = '<p><br>%data%</p>';
+  */
+
+}
 };
 
 
@@ -193,9 +241,18 @@ view = {
     //iterate through the list of formal schools one has attended and add to webpage
     $.each(online_programs, function (index, item) {
       $(".education-entry").append(item);
-  })
+  })},
 
+  renderWork: function(input_list) {
+    //setup the header for the WORK section
+    $("#workExperience").append(HTMLworkStart);
 
+    console.log(input_list);
+
+    //iterate through the list of jobs worked and add to webpage
+    $.each(input_list, function (index, item) {
+      $(".work-entry").append(item);
+    })
   }
 };
 
@@ -204,6 +261,8 @@ view.renderBio();
 let name_list = octopus.updateFormalEducationHTMLStrings();
 let online_list = octopus.updateOnlineEducationHTMLStrings();
 view.renderEducation(name_list, online_list);
+let workList = octopus.updateJobHTMLStrings();
+view.renderWork(workList);
 
 /*
 
@@ -223,24 +282,15 @@ var HTMLworkDates = '<div class="date-text">%data%</div>';
 var HTMLworkLocation = '<div class="location-text">%data%</div>';
 var HTMLworkDescription = '<p><br>%data%</p>';
 
+
+
 var HTMLprojectStart = '<div class="project-entry"></div>';
 var HTMLprojectTitle = '<a href="#">%data%</a>';
 var HTMLprojectDates = '<div class="date-text">%data%</div>';
 var HTMLprojectDescription = '<p><br>%data%</p>';
 var HTMLprojectImage = '<img src="%data%">';
 
-var HTMLschoolStart = '<div class="education-entry"></div>';
-var HTMLschoolName = '<a href="#">%data%';
-var HTMLschoolDegree = ' -- %data%</a>';
-var HTMLschoolDates = '<div class="date-text">%data%</div>';
-var HTMLschoolLocation = '<div class="location-text">%data%</div>';
-var HTMLschoolMajor = '<em><br>Major: %data%</em>';
 
-var HTMLonlineClasses = '<h3>Online Classes</h3>';
-var HTMLonlineTitle = '<a href="#">%data%';
-var HTMLonlineSchool = ' - %data%</a>';
-var HTMLonlineDates = '<div class="date-text">%data%</div>';
-var HTMLonlineURL = '<br><a href="#">%data%</a>';
 
 var internationalizeButton = '<button>Internationalize</button>';
 var googleMap = '<div id="map"></div>';
