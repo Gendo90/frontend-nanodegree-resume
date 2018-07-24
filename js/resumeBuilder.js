@@ -247,6 +247,15 @@ view = {
 
   },
 
+  renderFooter: function(){
+    //adds contacts to the footer
+    $("#footerContacts").append(HTMLmobile);
+    $("#footerContacts").append(HTMLemail);
+    $("#footerContacts").append(HTMLtwitter);
+    $("#footerContacts").append(HTMLgithub);
+    $("#footerContacts").append(HTMLlocation);
+  },
+
   //makes the education section of the resume visible on the webpage
   renderEducation: function(list, online_programs) {
     //Header for the education section added here:
@@ -261,7 +270,7 @@ view = {
     $("#education").append(HTMLonlineClasses + "<div class=education-entry></div>");
     //iterate through the list of formal schools one has attended and add to webpage
     $.each(online_programs, function (index, item) {
-      $(".education-entry").append(item);
+      $(".education-entry").last().append(item);
   })},
 
   //makes the work section of the resume visible on the webpage
@@ -291,6 +300,7 @@ view = {
 
 octopus.updateBioHTMLStrings();
 view.renderBio();
+view.renderFooter();
 let name_list = octopus.updateFormalEducationHTMLStrings();
 let online_list = octopus.updateOnlineEducationHTMLStrings();
 view.renderEducation(name_list, online_list);
@@ -299,12 +309,3 @@ view.renderWork(workList);
 let projList = octopus.updateProjectsHTMLStrings();
 view.renderProjects(projList);
 view.renderMap();
-/*
-
-
-var HTMLcontactGeneric = '<li class="flex-item"><span class="orange-text">%contact%</span><span class="white-text">%data%</span></li>';
-
-var HTMLblog = '<li class="flex-item"><span class="orange-text">blog</span><span class="white-text">%data%</span></li>';
-
-
-*/
