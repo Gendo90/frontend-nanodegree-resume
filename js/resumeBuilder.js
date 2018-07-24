@@ -282,7 +282,11 @@ view = {
     //iterate through the list of jobs worked and add to webpage
     $.each(input_list, function (index, item) {
       $(".project-entry").append(item);
-    })}
+    })},
+
+  renderMap: function() {
+    $("#mapDiv").append(googleMap)
+  }
 };
 
 octopus.updateBioHTMLStrings();
@@ -294,6 +298,7 @@ let workList = octopus.updateJobHTMLStrings();
 view.renderWork(workList);
 let projList = octopus.updateProjectsHTMLStrings();
 view.renderProjects(projList);
+view.renderMap();
 /*
 
 
@@ -302,15 +307,4 @@ var HTMLcontactGeneric = '<li class="flex-item"><span class="orange-text">%conta
 var HTMLblog = '<li class="flex-item"><span class="orange-text">blog</span><span class="white-text">%data%</span></li>';
 
 
-
-var HTMLprojectStart = '<div class="project-entry"></div>';
-var HTMLprojectTitle = '<a href="#">%data%</a>';
-var HTMLprojectDates = '<div class="date-text">%data%</div>';
-var HTMLprojectDescription = '<p><br>%data%</p>';
-var HTMLprojectImage = '<img src="%data%">';
-
-
-
-var internationalizeButton = '<button>Internationalize</button>';
-var googleMap = '<div id="map"></div>';
 */
