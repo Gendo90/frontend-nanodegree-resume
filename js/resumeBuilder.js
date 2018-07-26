@@ -57,7 +57,7 @@ function completeProjects(title, dates, description, images){
 sqlProject = new completeProjects("Newspaper Database Query Project", "04/18",
 "Queried a fictional newspaper website's Linux server database using PostgreSQL and a Python script to "
 +"determine the most popular authors and articles on the site, and to determine days when "
-+"the site had a high error rate when loading.", ["C:/Users/PGendotti/Documents/Hired/Portfolio Images/Newspaper_DB_Query.png"])
++"the site had a high error rate when loading.", ["images/Newspaper_DB_Query.png"])
 
 
 
@@ -77,7 +77,7 @@ model ={
 
   welcomeMessage: "It's nice of you to stop by!",
   skills: ["JavaScript", "JQuery", "MatLab", "Python", "CSS", "HTML"],
-  biopic: "https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-1/p160x160/28468001_10213889180397993_1393147267348055548_n.jpg?_nc_cat=0&oh=607a4e5bd966ed2fea4d0891b870299e&oe=5BC52E6C"
+  biopic: "images/Biopic.jpg"
 
   },
 
