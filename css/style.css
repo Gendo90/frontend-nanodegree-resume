@@ -14,6 +14,7 @@ h6 {
   font-family: "Roboto", sans-serif;
 }
 
+
 .centered {
   background-color: #4a4a4a;
   text-align: center;
@@ -147,8 +148,14 @@ a {
   clear: both;
 }
 
+.categories { /*can make this more responsive later, to smaller screen sizes*/
+  margin-bottom: 25vh;
+}
+
+
 .dark-gray {
   background-color: #4a4a4a;
+  margin-top: 10%;
 }
 
 /* TODO: Replace with image later */
