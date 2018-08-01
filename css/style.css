@@ -32,6 +32,13 @@ figcaption {
   color: #fff;
 }
 
+.foodpic {
+  width: 50%;
+  height: 300px;
+  margin-left: 25%;
+  object-fit: cover;
+}
+
 
 .clear-fix {
   overflow: auto;
