@@ -10,7 +10,7 @@
   <!-- Load the page styles. -->
   <link href="css/style.css" rel="stylesheet">
 </head>
-<body>
+<body class="gray">
   <div class="centered">
     <h1>Cooking</h1>
   </div> <br />
@@ -18,7 +18,7 @@
       <li><button type = "button" data-bind="click: $parent.setCurrentDish, text: name"></button></li>
   </ul>
   <br /><br /><br />
-    <div data-bind="with: currentDish">
+    <div class= "space-footer" data-bind="with: currentDish">
         <h2 data-bind="text: name"></h2>
         <img src="" class = "foodpic" alt="good food" data-bind="attr: {src: imgSrc}" >
         <br />
@@ -28,8 +28,16 @@
       </div>
     </div>
 
+    <div id="lets-connect" class="dark-gray">
+      <h2 class="orange center-text">Let's Connect</h2>
+        <ul id="footerContacts" class="flex-box">
+      </ul>
+    </div>
+
     <script src="js/lib/knockout-3.2.0.js"></script>
     <script src="js/food_app.js"></script>
+    <script src="js/jQuery.js"></script>
+    <script src="js/footerScript.js"></script>
 
 </body>
 </html>
