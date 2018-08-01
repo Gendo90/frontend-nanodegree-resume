@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <!-- Tells the browser what the title of this page should be. -->
+  <title>Good Food!</title>
+
+  <!-- Load the page styles. -->
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+  <div class="centered">
+    <h1>Cooking</h1>
+  </div> <br />
+  <ul id="dish-list" data-bind="foreach: allDishes">
+      <li><button type = "button" data-bind="click: $parent.setCurrentDish, text: name"></button></li>
+  </ul>
+  <br /><br /><br />
+    <div data-bind="with: currentDish">
+        <h2 data-bind="text: name"></h2>
+        <img src="" class = "foodpic" alt="good food" data-bind="attr: {src: imgSrc}" >
+        <br />
+        <h4>Ingredients:</h4>
+        <div data-bind="foreach: ingredients">
+          <div data-bind="text: $data"></div>
+      </div>
+    </div>
+
+    <script src="js/lib/knockout-3.2.0.js"></script>
+    <script src="js/food_app.js"></script>
+
+</body>
+</html>
