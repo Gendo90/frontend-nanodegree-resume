@@ -11,9 +11,13 @@ var pestoShrimp = {
   ingredients: ["shrimp", "butter", "olive oil", "pesto", "lime"]
 }
 
+var fettucineAlfredo = {
+  name: "Chicken Fettucine Alfredo",
+  imgSrc: "images/Dishes/chicken_fettucine_alfredo.jpg", //set this right!
+  ingredients: ["chicken", "broccoli", "fettucine", "milk", "cream cheese"]
+}
 
-
-dishList = [pannaCotta, pestoShrimp];
+dishList = [pannaCotta, pestoShrimp, fettucineAlfredo];
 
 
 
