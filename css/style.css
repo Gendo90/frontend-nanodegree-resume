@@ -38,6 +38,16 @@ iframe {
   text-align: center;
 }
 
+.phoenix_main_profile{
+  background-color: #1199c3;
+  width: 50%;
+  min-width: 200px;
+  max-width: 800px;
+  margin-left: 25%;
+  height: calc(200px + 30%);
+  text-align: center;
+}
+
 figcaption {
   color: #fff;
 }
@@ -145,6 +155,14 @@ a {
   width: 60%;
   height: 80%;
   object-fit: cover;
+}
+
+.phoenix_mainpic {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 #skills-h3 {
