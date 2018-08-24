@@ -17,7 +17,19 @@ var fettucineAlfredo = {
   ingredients: ["chicken", "broccoli", "fettucine", "milk", "cream cheese"]
 }
 
-dishList = [pannaCotta, pestoShrimp, fettucineAlfredo];
+var mongolianBeef = {
+  name: "Mongolian Beef & Broccoli",
+  imgSrc: "images/Dishes/mong_beef.jpg", //set this right!
+  ingredients: ["beef", "broccoli", "soy sauce"]
+}
+
+var shepherdPie = {
+  name: "Shepherd's Pie",
+  imgSrc: "images/Dishes/shepherd_pie.jpg", //set this right!
+  ingredients: ["beef", "potatoes", "peas"]
+}
+
+dishList = [pannaCotta, pestoShrimp, fettucineAlfredo, shepherdPie, mongolianBeef];
 
 
 

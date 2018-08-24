@@ -23,8 +23,14 @@ var voltorb = {
   components: ["pencil", "sketchbook"]
 }
 
+var roundShield = {
+  name: "Round Shield (Britannia)",
+  imgSrc: "images/Sketches/round_shield.jpg", //set this right!
+  components: ["pencil", "sketchbook"]
+}
 
-pieceList = [lampBase, gengar, snorlax, voltorb];
+
+pieceList = [lampBase, gengar, snorlax, voltorb, roundShield];
 
 
 
