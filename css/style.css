@@ -30,10 +30,16 @@ iframe {
   text-align: center;
 }
 
+.plain_text {
+  margin: auto;
+  padding: 20px;
+  max-width: 800px;
+}
+
 .main_profile{
   background-color: #1199c3;
   width: 50%;
-  margin-left: 25%;
+  margin-right: 25%;
   height: 400px;
   text-align: center;
 }
@@ -190,7 +196,8 @@ a {
 }
 
 .categories { /*can make this more responsive later, to smaller screen sizes*/
-  margin-bottom: 25vh;
+  /*margin-bottom: 25vh;*/
+  width: 25%;
 }
 
 .space-footer {
