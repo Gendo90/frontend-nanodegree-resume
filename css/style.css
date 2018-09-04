@@ -243,6 +243,15 @@ a {
   padding: 10px;
 }
 
+.flex-list-foods {
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: left;
+  max-width: 1000px;
+}
+
 .center-content {
   padding: 2.5% 5%;
 }

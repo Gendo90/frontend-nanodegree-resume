@@ -29,7 +29,14 @@ var shepherdPie = {
   ingredients: ["beef", "potatoes", "peas"]
 }
 
-dishList = [pannaCotta, pestoShrimp, fettucineAlfredo, shepherdPie, mongolianBeef];
+var cornbread = {
+  name: "Cornbread",
+  imgSrc: "images/Dishes/cornbread.jpg", //set this right!
+  ingredients: ["cornmeal", "flour", "eggs", "milk"]
+}
+
+dishList = [pannaCotta, pestoShrimp, fettucineAlfredo, shepherdPie, mongolianBeef,
+            cornbread];
 
 
 
