@@ -99,7 +99,19 @@ figcaption {
   padding: 5%;
   padding-top: 5px;
   object-fit: cover;
+  justify-self: center;
 }
+
+/*.DA_prototype2 {
+  width: 40%;
+  height: 50vh;
+  max-height: 480px;
+  max-width: 340px;
+  margin-right: 20%;
+  padding: 5%;
+  padding-top: 5px;
+  object-fit: cover;
+}*/
 
 .clear-fix {
   overflow: auto;
@@ -243,13 +255,17 @@ a {
   background-color: #484848;
 }
 
-.flex-box {
+.flex-box, .flex-box_DA {
   display: -webkit-flex;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
   padding: 10px;
+}
+
+.flex-box_DA {
+  justify-content: center;
 }
 
 .flex-column {
