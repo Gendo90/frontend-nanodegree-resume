@@ -91,6 +91,16 @@ figcaption {
   object-fit: cover;
 }
 
+.DA_prototype {
+  width: 40%;
+  height: 50vh;
+  max-height: 480px;
+  max-width: 340px;
+  padding: 5%;
+  padding-top: 5px;
+  object-fit: cover;
+}
+
 .clear-fix {
   overflow: auto;
 }
