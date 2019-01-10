@@ -27,8 +27,11 @@ function onlineSchool(title, school, dates, url) {
   this.url = url;
 }
 
-online_education = new onlineSchool("Introduction to Programming Nanodegree",
+online_education_1 = new onlineSchool("Introduction to Programming Nanodegree",
 "Udacity", "2018", "https://www.udacity.com/course/intro-to-programming-nanodegree--nd000")
+
+online_education_2 = new onlineSchool("Full Stack Web Developer Nanodegree",
+"Udacity", "2018", "https://www.udacity.com/course/full-stack-web-developer-nanodegree--nd004")
 
 
 
@@ -83,7 +86,7 @@ model ={
 
   education: {
     schools: [college, graduate_school],
-    onlineCourses: [online_education]
+    onlineCourses: [online_education_1, online_education_2]
   },
 
   work: {
