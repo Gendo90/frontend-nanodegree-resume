@@ -50,19 +50,20 @@ law_office = new heldJobs("Law Offices of Diana Dean-Gendotti", "Legal Assistant
 "08/2018-01/18", "Helped check and prepare legal documents for estate planning meetings; performed various administrative tasks.");
 
 
-function completeProjects(title, dates, description, images){
+function completeProjects(title, url, dates, description, images){
   this.title = title;
+  this.url = url||"";
   this.dates = dates;
   this.description = description;
   this.images = images;
 }
 
-sqlProject = new completeProjects("Newspaper Database Query Project", "04/18",
+sqlProject = new completeProjects("Newspaper Database Query Project", null, "04/18",
 "Queried a fictional newspaper website's Linux server database using PostgreSQL and a Python script to "
 +"determine the most popular authors and articles on the site, and to determine days when "
 +"the site had a high error rate when loading.", ["images/Newspaper_DB_Query.png"])
 
-bestbookcollectionProject = new completeProjects("Best Book Collection Website", "10/18",
+bestbookcollectionProject = new completeProjects("Best Book Collection Website", "https://www.bestbookcollection.com/", "10/18",
 "A 'book collection' viewing and sharing catalog that is a work in progress, with more features planned in "
 + "the future. Users can login to the website using their Facebook or Google account information, and add,"
 + "edit, and delete information about books that they enjoy reading. The public site shows the books that "
@@ -203,7 +204,13 @@ updateJobHTMLStrings: function() {
 
 
    $.each(octopus.projects.projects, function(index, item) {
-     let HTMLprojectTitle_current = HTMLprojectTitle.replace("%data%", item.title);
+     let HTMLprojectTitle_current = null;
+     if(item.url) {
+       HTMLprojectTitle_current = HTMLprojectTitle.replace("%data%", item.title).replace("#", item.url);
+     } else {
+       HTMLprojectTitle_current = HTMLprojectTitle.replace("%data%", item.title);
+     }
+
      let HTMLprojectDates_current = HTMLprojectDates.replace("%data%", item.dates);
      let HTMLprojectDescription_current = HTMLprojectDescription.replace("%data%", item.description);
 
@@ -211,6 +218,8 @@ updateJobHTMLStrings: function() {
      $.each(this.images, function(index, item){
        HTMLprojectImage_current += HTMLprojectImage.replace("%data%", item); //should add multiple images... TEST!!!
      });
+
+
 
      project_strings.push(HTMLprojectTitle_current+HTMLprojectDates_current
        +HTMLprojectDescription_current+HTMLprojectImage_current);
