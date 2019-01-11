@@ -62,7 +62,12 @@ sqlProject = new completeProjects("Newspaper Database Query Project", "04/18",
 +"determine the most popular authors and articles on the site, and to determine days when "
 +"the site had a high error rate when loading.", ["images/Newspaper_DB_Query.png"])
 
-
+bestbookcollectionProject = new completeProjects("Best Book Collection Website", "10/18",
+"A 'book collection' viewing and sharing catalog that is a work in progress, with more features planned in "
++ "the future. Users can login to the website using their Facebook or Google account information, and add,"
++ "edit, and delete information about books that they enjoy reading. The public site shows the books that "
++ "users have added, along with their personal comments and descriptions for each book. Created as part of "
++ "the Udacity Full-Stack Nanodegree requirements.", ["images/Book_Collection_Header.png", "images/Book_Collection_Book.png"])
 
 
 model ={
@@ -94,7 +99,7 @@ model ={
   },
 
   projects: {
-    projects: [sqlProject]
+    projects: [bestbookcollectionProject, sqlProject]
   }
 };
 
