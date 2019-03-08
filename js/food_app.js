@@ -35,8 +35,14 @@ var cornbread = {
   ingredients: ["cornmeal", "flour", "eggs", "milk"]
 }
 
+var honeySoySalmon = {
+  name: "Honey Soy Salmon",
+  imgSrc: "images/Dishes/honey_salmon.jpg", //set this right!
+  ingredients: ["salmon", "honey", "soy sauce", "garlic", "ginger", "pepper"]
+}
+
 dishList = [pannaCotta, pestoShrimp, fettucineAlfredo, shepherdPie, mongolianBeef,
-            cornbread];
+            cornbread, honeySoySalmon];
 
 
 
