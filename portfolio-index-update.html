@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Portfolio Webpage</title>
+        <meta name="author" content="Patrick Gendotti"/>
+        <meta name="description" content="A sample responsive portfolio page"/>
+        <link rel="stylesheet" href="css/styles.css"/>
+    </head>
+    <body>
+        <div class="container">
+            <header class="heading">
+                <div class="header_text_flex">
+                    <h1>Patrick <span class="middle_initial">J.</span> Gendotti</h1>
+                    <h3 class="job_title">Full-Stack Developer</h3>
+                </div>
+                <div class="logo_container">
+                    <div class="logo_holder">
+                        <img id="logo" class="logo" src="images/fitted_logo.svg" alt="Compass Rose Logo"/>
+                        <div class = "spacer"></div>
+                    </div>
+                </div>
+            </header>
+            <main>
+                <article>
+                    <h3 class="article_heading">Patrick Gendotti</h3>
+                    <div class="top_row_container">
+                        <div class="main_pic_container">
+                            <img class="main_pic" src="images/biopic.jpg" alt="Patrick Gendotti"/>
+                        </div>
+                        <div class="text_container">
+                            <p>
+                                Patrick Gendotti is a mechanical engineer with an M.S.
+                                from the University of Southern California and
+                                currently lives in the San Francisco Bay Area. He is
+                                currently shifting his career focus from mechanical
+                                engineering to software engineering, especially web
+                                site design and deployment, using books and online
+                                programs like Udacity. In fact, this homepage is
+                                a portfolio project completed as part of a Udacity
+                                course.
+                            </p>
+                        </div>
+                    </div>
+                </article>
+            </main>
+            <nav>
+                <div class="featured_projects">
+                    <h3><span class="featured_text">Featured Project Categories:</span></h3>
+                </div>
+                <div class="lower_pic_flex">
+                    <div id="leftmost" class="lower_pic_container">
+                        <img class="pic" src="images/website.png" alt="Websites" title="Websites"/>
+                        <p class="project_category_descr">Websites</p>
+                    </div>
+                    <div class="lower_pic_container">
+                        <img class="pic" src="images/game.png" alt="Computer Games" title="Computer Games"/>
+                        <p class="project_category_descr">Computer Games</p>
+                    </div>
+                    <div class="lower_pic_container">
+                        <a href="artwork.html"><img class="pic" src="images/sketches/round_shield.jpg" alt="Artwork" title="Artwork"/></a>
+                        <a href="artwork.html"><p class="project_category_descr">Artwork</p></a>
+                    </div>
+                    <div class="lower_pic_container">
+                        <a href="cooking.html"><img class="pic" src="images/dishes/pesto_shrimp.jpg" alt="Cooking" title="Cooking"/></a>
+                        <a href="cooking.html"><p class="project_category_descr">Cooking</p></a>
+                    </div>
+                    <div class="lower_pic_container">
+                        <img class="pic" src="images/data.jpg" alt="Algorithms and Data" title="Algorithms and Data"/>
+                        <p class="project_category_descr">Algorithms and Data<sup>2</sup></p>
+                    </div>
+                    <div id="rightmost" class="lower_pic_container">
+                        <img class="pic" src="images/data.jpg" alt="Algorithms and Data" title="Algorithms and Data"/>
+                        <p class="project_category_descr">Algorithms and Data<sup>1</sup></p>
+                    </div>
+                </div>
+            </nav>
+            <footer class="footer">
+                <p>
+                    [1]: Image by <a href="https://pixabay.com/users/Manuchi-1728328/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2462426">Денис Марчук</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2462426">Pixabay</a>
+                </p>
+                <br />
+                <span>Last Updated: June 2019</span>
+            </footer>
+        </div>
+        <script src="js/logo_anim.js"></script>
+        <!-- <script src="js/category_anim.js"></script> -->
+    </body>
+</html>
