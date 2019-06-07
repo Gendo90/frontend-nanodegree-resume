@@ -287,9 +287,6 @@ img.pic {
         padding-top: 5px;
         width: 100%;
         min-width: 50%;
-    }
-
-    * {
         animation-name: none !important;
     }
 
@@ -315,7 +312,7 @@ img.pic {
         padding-bottom: 80px;
     }
 
-    * {
+    div.lower_pic_container {
         animation-name: none !important;
     }
 
