@@ -69,6 +69,25 @@ figcaption {
   color: #fff;
 }
 
+.flex-list {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.thumbnail {
+    width:25%;
+    padding: 20px;
+}
+
+.thumbnail .pic {
+    width: 90%;
+    min-width: 200px;
+    max-width: 310px;
+    margin-right: 30px;
+    object-fit: cover;
+}
+
 .foodpic {
   width: 50%;
   height: 50vh;
@@ -335,6 +354,20 @@ span {
   .welcome-message {
     display: none;
   }
+
+  .flex-list {
+      flex-direction: column;
+      width: inherit;
+  }
+  .thumbnail {
+      width: inherit;
+      margin: auto;
+  }
+  .thumbnail .pic {
+      padding: 0px;
+      margin-right: 0px;
+      margin: auto;
+  }
 }
 
 #map {
@@ -353,5 +386,20 @@ span {
   #skills-h3,
   .biopic {
     display: block;
+  }
+
+@media only screen and (max-width: 800px) {
+  .flex-list {
+      flex-direction: column;
+      width: inherit;
+  }
+  .thumbnail {
+      width: inherit;
+      margin: auto;
+  }
+  .thumbnail .pic {
+      padding: 0px;
+      margin-right: 0px;
+      margin: auto;
   }
 }
