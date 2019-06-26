@@ -368,6 +368,10 @@ span {
       margin-right: 0px;
       margin: auto;
   }
+  .list_desc {
+      margin-left: 5%;
+      margin-right: 5%;
+  }
 }
 
 #map {
@@ -400,6 +404,9 @@ span {
   .thumbnail .pic {
       padding: 0px;
       margin-right: 0px;
+      margin: auto;
+  }
+  .list_desc {
       margin: auto;
   }
 }
