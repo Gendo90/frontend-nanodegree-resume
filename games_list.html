@@ -12,35 +12,65 @@
 </head>
 <body class="gray">
   <div class="centered">
-    <h1>Designed and Built Websites</h1>
+    <h1>Games</h1>
   </div> <br />
   <main>
       <!-- ADD HEADER HERE -->
       <!-- ADD DESCRIPTION OF PAGE AND BACKGROUND HERE! -->
       <article class="flex-list">
           <div class="thumbnail">
-              <a href="vocab_game"><img class="pic" src="images/thumbnails/Vocab_Quiz.png" alt="Basic Vocabulary Game" title="Basic Vocabulary Game"/></a>
+              <a target="_blank" download href="vocab_game/fill-in-the-blanks_version_2.py">
+                  <img class="pic" src="images/thumbnails/Vocab_Quiz.png" alt="Basic Vocabulary Game" title="Basic Vocabulary Game"/>
+              </a>
           </div>
           <div class="list_desc">
-              <p>description of Intro to Programming vocabulary game (in python for python beginners) - include repo link</p>
+              <p class="center-text">This project was completed as part of Udacity's
+                  <a href="https://www.udacity.com/course/intro-to-programming-nanodegree--nd000">Intro to Programming Nanodegree</a>
+                  to help me and others learn Python.
+                  The game consists of three vocabulary quizzes of varying
+                  difficulty - easy, medium, and hard. You have a list of words
+                  you can use (a word bank) and attempt to fill in the blanks
+                  of a paragraph with these words. This is a text-based game,
+                  and you need to have Python installed on your computer to run
+                  and play it successfully!</p>
+              <br />
+              <p class="center-text">In order to play this game, you need to run
+              <a target="_blank" download href="vocab_game/fill-in-the-blanks_version_2.py">this</a>
+              file from a terminal window using the 'python
+              fill-in-the-blanks_version_2.py' command. Again, you need to have
+              Python on your computer for this game to work! If you save the file
+              to a different name than 'fill-in-the-blanks_version_2.py' then
+              you can also run the game using that file name instead of
+              'fill-in-the-blanks_version_2.py' after the 'python' command!</p>
+              <br />
           </div>
       </article>
       <article class="flex-list">
           <div class="thumbnail">
-              <a href="memory_game/memory_game_page.html"><img class="pic" src="images/thumbnails/game.png" alt="Concentration Memory Game" title="Concentration Memory Game"/></a>
+              <a class="list-link" href="memory_game/memory_game_page.html"><img class="pic" src="images/thumbnails/game.png" alt="Concentration Memory Game" title="Concentration Memory Game"/></a>
           </div>
           <div class="list_desc">
-              <p>description of how/when item was built, skills used, future features? and link to github repo</p>
+              <p class="center-text">This game was created as part of Udacity's
+                  <a href="https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001">Front-End Web
+                  Developer Nanodegree</a> to help learn JavaScript, and also HTML
+                  and CSS. The JavaScript code manipulates the DOM containing
+                  HTML and CSS to transform the static webpage provided by
+                  Udacity as part of their <a href="https://github.com/udacity/fend-project-memory-game">Memory Game Project repo</a> into an
+                  interactive memory game playable in any web browser.</p>
+               <br />
+               <p class="center-text">My code for the Matching Game is available <a href="https://github.com/Gendo90/fend-project-memory-game">here</a> on Github.</p>
           </div>
       </article>
-      <article class="flex-list">
+      <br />
+      <!-- TODO: Add below section when frogger game is complete! -->
+      <!-- <article class="flex-list">
           <div class="thumbnail">
               <a href="frogger"><img class="pic" src="images/website.png" alt="frogger clone" title="frogger clone"/></a>
           </div>
           <div class="list_desc">
               <p>description of work on frogger clone using OOP with JS, link to repo</p>
           </div>
-      </article>
+      </article> -->
   </main>
 
   <div id="lets-connect" class="dark-gray">
@@ -48,7 +78,7 @@
       <ul id="footerContacts" class="flex-box">
     </ul>
   </div>
-
+    <script src="js/jQuery.js"></script>
     <script src="js/footerScript.js"></script>
 </body>
 </html>
