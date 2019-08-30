@@ -175,6 +175,10 @@ div.lower_pic_container {
 
 }
 
+.stop_animation {
+    animation-name: none !important;
+}
+
 /* @-webkit-keyframes cycle_thru {
   0% {
       -webkit-transform: initial;
