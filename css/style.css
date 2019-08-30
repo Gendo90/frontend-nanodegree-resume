@@ -340,6 +340,11 @@ span {
   padding: 5px;
 }
 
+.rangoli {
+    margin: auto;
+    text-align: center;
+}
+
 #lets-connect {
   text-align: center;
 }
