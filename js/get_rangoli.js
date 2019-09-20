@@ -6,6 +6,9 @@ let rangoli_result;
 let submit_button = document.getElementById("submit");
 let rangoli_parent = document.getElementById("rangoli_space");
 let background_selector = document.getElementById("background-colors");
+let cycle_button = document.getElementById("cycle");
+let stop_cycle_button = document.getElementById("halt_cycle");
+let interval_var;
 let selector_colors;
 let output_lines;
 let para;
@@ -40,12 +43,18 @@ for (let color of CSS_COLOR_NAMES) {
 }
 
 background_selector.addEventListener('change', function(event) {
-    console.log(event.target)
-    // all_spans = document.getElementsByClassName("rangoli_char");
-    // for (let char of all_spans) {
-    //     char.style.backgroundColor = event.target.value;
-    // }
     rangoli_parent.style.backgroundColor = event.target.value;
+})
+
+cycle_button.addEventListener('click', function() {
+    interval_var = setInterval(function() {rangoli_parent.style.backgroundColor = getRandomColor()},
+    1000);
+    cycle_button.style.display = 'none';
+})
+
+stop_cycle_button.addEventListener('click', function() {
+    clearInterval(interval_var);
+    cycle_button.style.display = 'inline';
 })
 
 let params = {
@@ -93,7 +102,6 @@ submit_button.addEventListener("click", function() {
             }
             // para.textContent = line;
             rangoli_parent.appendChild(para);
-            console.log(para)
         }
 })
 
