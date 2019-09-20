@@ -345,6 +345,17 @@ span {
     text-align: center;
 }
 
+div.rangoli {
+    margin: auto;
+    text-align: center;
+    display: inline-block;
+}
+
+div.rangoli_holder {
+    margin:auto;
+    text-align: center;
+}
+
 #lets-connect {
   text-align: center;
 }
