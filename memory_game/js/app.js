@@ -116,6 +116,15 @@ function showCard(event) {
 allOpenCards = [];
 // global variable used to reset the timer after a game ends or is restarted
 let timerInterval = null;
+// sound to play (using howler.js library) when cards are matched correctly
+let correctSound = new Howl({
+    src: ['sounds/correct.wav']
+})
+// sound to play (using howler.js library) when cards are not matched correctly
+let incorrectSound = new Howl({
+    src: ['sounds/mismatched.wav']
+})
+
 function checkCards(card) {
     // Prevents the case where a card matches with itself!
     if(card!==allOpenCards[0]) {
@@ -131,11 +140,17 @@ function checkCards(card) {
 
             // run function to lock cards open, matched correctly!
             allOpenCards = setMatchedCards(allOpenCards);
+
+            // play matched sound - for matching cards!
+            correctSound.play();
         }
         else {
             // run function to remove cards from "allOpenCards" and
             // function to hide them again (place in above function)
             allOpenCards = revertMismatch(allOpenCards);
+
+            // play sound to signify a "mismatch"
+            incorrectSound.play()
         }
 
         // run function to increment move counter
