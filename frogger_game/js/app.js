@@ -25,6 +25,9 @@ Enemy.prototype.checkCollisions = function () {
         player.x + player.width + player.horizTransform > this.x &&
 		player.y + player.vertTransform < this.y + this.height + this.vertTransform &&
         player.y + player.height + player.vertTransform > this.y + this.vertTransform) {
+
+        let score = document.querySelector("span")
+        score.textContent = 0
         // The objects are touching, so there is a collision! Reset the game!
         resetGame();
 }
@@ -49,15 +52,14 @@ Enemy.prototype.render = function() {
 
 //function to show the winning game screen
 function gameOver() {
+    resetGame()
     swal.fire({
         type: 'success',
         title: 'Congratulations!',
         html: 'You have won the game!',
         confirmButtonText: 'Awesome',
         allowOutsideClick: false
-    }).then(
-            resetGame
-  )
+    })
 }
 
 //function to reset the game after winning or losing
@@ -65,6 +67,7 @@ function resetGame() {
     player.x = 200;
     player.y = 375;
     allEnemies = populateInitialEnemies();
+    allGemstones = populateGemstones();
 }
 
 // Now write your own player class
@@ -132,7 +135,7 @@ Player.prototype.update = function(dt) {
     this.render();
 };
 
-// Draw the enemy on the screen, required method for game
+// Draw the player on the screen, required method for game
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
@@ -182,9 +185,61 @@ function removePassedEnemies() {
     }
 }
 
+//colors of gemstones available
+gemColors = ['Blue', 'Green', 'Orange']
+
+//create a class for Gemstones (which will add score)
+function Gemstone(color, x, y) {
+    this.x = x;
+    this.y = y;
+
+    // built-in bounding box size
+    this.width = 50;
+    this.height = 80;
+
+    //bounding box transform from sprite corner to base of character
+    this.horizTransform = 25;
+    this.vertTransform = 115;
+
+    this.sprite = `images/Gem ${color}.png`;
+}
+
+// Draw the enemy on the screen, required method for game
+Gemstone.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y, this.width, this.height);
+};
+
+// check for collisions by comparing the bounding box of this gemstone to
+// that of the player - adds points and removes the gemstone if there is a hit!
+Gemstone.prototype.checkCollisions = function () {
+    if (player.x + player.horizTransform < this.x + this.horizTransform  &&
+        player.x + player.width + player.horizTransform > this.x + this.horizTransform - this.width &&
+		player.y + player.vertTransform < this.y+this.vertTransform &&
+        player.y + player.height + player.vertTransform > this.y +this.vertTransform - this.height) {
+        // The objects are touching, so there is a collision! Add to the score!
+        let score = document.querySelector("span")
+        score.textContent = Number.parseInt(score.textContent)+100
+        allGemstones = allGemstones.filter(a => a!==this);
+        }
+}
+
+
+//Add gemstones to the game board
+function populateGemstones() {
+    let gems = []
+    for (let gemstone of gemColors) {
+        let gem_x = randomRange(0, 4)*100+25;
+        let gem_y = randomRange(0, 2)*83+115;
+        gems.push(new Gemstone(gemstone, gem_x, gem_y))
+    }
+    return gems;
+}
+
 // Place all enemy objects in an array called allEnemies
 let allEnemies = populateInitialEnemies();
 
+// Place all gemstones in a gemstone array
+let allGemstones = populateGemstones();
 
 // Continue to generate enemies across the board
 // Also remove enemies that are offscreen to the right (cannot interact with
@@ -211,6 +266,7 @@ async function getSelectedChar() {
       input: 'radio',
       width: 600,
       inputOptions: inputOptions,
+      allowOutsideClick: false,
       inputValidator: (value) => {
         if (!value) {
           return 'You need to choose something!'
