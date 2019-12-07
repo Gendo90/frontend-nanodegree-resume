@@ -421,6 +421,7 @@ function background_shift() {
 
 function changeBackground(timeUntilEnd, everySec=[]) {
     everySec.push(setInterval(background_shift, 1000))
+    all_timeouts = all_timeouts.concat(everySec);
     setTimeout(function() {
         everySec.map(a=>clearInterval(a))
         let table = document.getElementsByTagName("table")[0]
@@ -432,19 +433,21 @@ function changeBackground(timeUntilEnd, everySec=[]) {
 
 function fullSongShifts() {
     console.log("shifting started")
-    setTimeout(()=>changeBackground(55000), 62000)
-    setTimeout(()=>changeBackground(55000), 141000)
+    all_timeouts.push(setTimeout(()=>changeBackground(55000), 62000))
+    all_timeouts.push(setTimeout(()=>changeBackground(55000), 141000))
 
     //test values
     // setTimeout(()=>changeBackground(5000), 10000)
     // setTimeout(()=>changeBackground(5000), 25000)
 }
+
+let all_timeouts = []
 //
 let background_music = new Howl({
   src: ['./sounds/dubstep_soundtrack.mp3'],
   // autoplay: true,
   loop: true,
-  onplay: fullSongShifts(),
+  onplay: function() {fullSongShifts()},
   onload: console.log("loaded"),
   onend: function() {fullSongShifts()}
   // html5: true,
@@ -542,6 +545,13 @@ async function runGame(plans, Display) {
     // }
   }
   console.log("You've won!");
+  //clear out the current timed functions for the music - refactor into
+  //a single function, see if there is a way to do it without global variables
+  all_timeouts.map(a=>clearTimeout(a))
+  all_timeouts.map(a=>clearInterval(a))
+  all_timeouts=[]
+  //stop the music, so the first level has the intro music
+  background_music.stop();
   winSound.play();
   Swal.fire(
       "Congratulations, <br>You Won!",
