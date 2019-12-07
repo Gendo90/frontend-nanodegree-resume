@@ -1,3 +1,17 @@
+/* Body and Div styling needed so that there is not an offset with the actors
+and walls - May fix to look prettier later! */
+body {
+    margin-left: 0px;
+}
+
+.game {
+    margin-left: 0px;
+    width: 600px;
+    /* overflow-x: hidden; */
+}
+
+/* Need to add a shift for the top margin, too! */
+
 .background {
     background: rgb(52, 166, 251);
     table-layout: fixed;
@@ -22,6 +36,10 @@
 
 .coin {
     background: rgb(241, 229, 89);
+}
+
+.monster {
+    background: green;
 }
 
 .player {
