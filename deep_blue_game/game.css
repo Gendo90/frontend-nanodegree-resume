@@ -14,8 +14,14 @@ body {
 
 .background {
     background: rgb(52, 166, 251);
+    /* different transition style? */
+    transition: background 1s ease;
     table-layout: fixed;
     border-spacing: 0;
+}
+
+.background.active {
+    
 }
 
 .background td {

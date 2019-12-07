@@ -290,7 +290,6 @@ Lava.prototype.update = function(time, state) {
   if (!state.level.touches(newPos, this.size, "wall")) {
     return new Lava(newPos, this.speed, this.reset);
   } else if (this.reset) {
-      console.log(this.pos.x)
     return new Lava(this.reset, this.speed, this.reset);
   } else {
     return new Lava(this.pos, this.speed.times(-1));
@@ -403,14 +402,51 @@ function runAnimation(frameFunc) {
   requestAnimationFrame(frame);
 }
 
+let CSS_COLOR_NAMES = ["AliceBlue","AntiqueWhite","Aqua","Aquamarine","Azure","Beige","Bisque","Black","BlanchedAlmond","Blue","BlueViolet","Brown","BurlyWood","CadetBlue","Chartreuse","Chocolate","Coral","CornflowerBlue","Cornsilk","Crimson","Cyan","DarkBlue","DarkCyan","DarkGoldenRod","DarkGray","DarkGrey","DarkGreen","DarkKhaki","DarkMagenta","DarkOliveGreen","DarkOrange","DarkOrchid","DarkRed","DarkSalmon","DarkSeaGreen","DarkSlateBlue","DarkSlateGray","DarkSlateGrey","DarkTurquoise","DarkViolet","DeepPink","DeepSkyBlue","DimGray","DimGrey","DodgerBlue","FireBrick","FloralWhite","ForestGreen","Fuchsia","Gainsboro","GhostWhite","Gold","GoldenRod","Gray","Grey","Green","GreenYellow","HoneyDew","HotPink","IndianRed","Indigo","Ivory","Khaki","Lavender","LavenderBlush","LawnGreen","LemonChiffon","LightBlue","LightCoral","LightCyan","LightGoldenRodYellow","LightGray","LightGrey","LightGreen","LightPink","LightSalmon","LightSeaGreen","LightSkyBlue","LightSlateGray","LightSlateGrey","LightSteelBlue","LightYellow","Lime","LimeGreen","Linen","Magenta","Maroon","MediumAquaMarine","MediumBlue","MediumOrchid","MediumPurple","MediumSeaGreen","MediumSlateBlue","MediumSpringGreen","MediumTurquoise","MediumVioletRed","MidnightBlue","MintCream","MistyRose","Moccasin","NavajoWhite","Navy","OldLace","Olive","OliveDrab","Orange","OrangeRed","Orchid","PaleGoldenRod","PaleGreen","PaleTurquoise","PaleVioletRed","PapayaWhip","PeachPuff","Peru","Pink","Plum","PowderBlue","Purple","RebeccaPurple","Red","RosyBrown","RoyalBlue","SaddleBrown","Salmon","SandyBrown","SeaGreen","SeaShell","Sienna","Silver","SkyBlue","SlateBlue","SlateGray","SlateGrey","Snow","SpringGreen","SteelBlue","Tan","Teal","Thistle","Tomato","Turquoise","Violet","Wheat","White","WhiteSmoke","Yellow","YellowGreen"];
+
+function getRandomColor() {
+    ind = Math.floor(Math.random()*CSS_COLOR_NAMES.length)
+    return CSS_COLOR_NAMES[ind]
+}
+
+function background_shift() {
+    let this_color = getRandomColor()
+    let table = document.getElementsByTagName("table")[0]
+    table.classList.add("active")
+    table.style.background = this_color
+    console.log(this_color)
+
+    // setTimeout(background_shift, 1000);
+}
+
+function changeBackground(timeUntilEnd, everySec=[]) {
+    everySec.push(setInterval(background_shift, 1000))
+    setTimeout(function() {
+        everySec.map(a=>clearInterval(a))
+        let table = document.getElementsByTagName("table")[0]
+        table.classList.remove("active")
+        table.style.background = '#34a5fb';
+    },
+        timeUntilEnd)
+}
+
+function fullSongShifts() {
+    console.log("shifting started")
+    setTimeout(()=>changeBackground(55000), 62000)
+    setTimeout(()=>changeBackground(55000), 141000)
+
+    //test values
+    // setTimeout(()=>changeBackground(5000), 10000)
+    // setTimeout(()=>changeBackground(5000), 25000)
+}
+//
 let background_music = new Howl({
   src: ['./sounds/dubstep_soundtrack.mp3'],
-  autoplay: true,
+  // autoplay: true,
   loop: true,
-  preload: true,
-  onplay: console.log("started"),
+  onplay: fullSongShifts(),
   onload: console.log("loaded"),
-  onend: console.log("ended")
+  onend: function() {fullSongShifts()}
   // html5: true,
   // volume: 0.5
 });
@@ -478,9 +514,18 @@ function runLevel(level, Display) {
   });
 }
 
+let winSound = new Howl({
+    src: ['sounds/cheer.mp3']
+})
 async function runGame(plans, Display) {
   let lives = 3;
+  // background_music.on('end', fullSongShifts)
   background_music.play();
+  // setTimeout(function () {
+  //     console.log(everySec)
+  //     clearInterval(everySec)}, 15000)//62000+54000
+  //then 22 seconds of regular screen
+  // then ~55 seconds of shifting again
   for (let level = 0; level < plans.length;) {
     console.log(lives)
     let status = await runLevel(new Level(plans[level]),
@@ -497,4 +542,10 @@ async function runGame(plans, Display) {
     // }
   }
   console.log("You've won!");
+  winSound.play();
+  Swal.fire(
+      "Congratulations, <br>You Won!",
+      "Play Again?",
+      'success'
+  ).then((result)=>runGame(plans, Display))
 }
