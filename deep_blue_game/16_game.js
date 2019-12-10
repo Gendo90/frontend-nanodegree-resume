@@ -240,6 +240,7 @@ State.prototype.update = function(time, keys) {
 
   let player = newState.player;
   if (this.level.touches(player.pos, player.size, "lava")) {
+    lavaBurn.play();
     return new State(this.level, actors, "lost");
   }
 
@@ -269,7 +270,12 @@ function onTop(player, actor2) {
            player.speed.y===0;
 }
 
+let lavaBurn = new Howl({
+    src: ['./sounds/burn.wav']
+})
+
 Lava.prototype.collide = function(state) {
+  lavaBurn.play()
   return new State(state.level, state.actors, "lost");
 };
 
