@@ -302,13 +302,18 @@ Lava.prototype.update = function(time, state) {
   }
 };
 
+let monsterSquish = new Howl({
+    src: ['./sounds/squish.wav']
+})
+
 Monster.prototype.collide = function(state) {
     let player = state.player
-    //remove monster from list of actors in case the player squised the monster
+    //remove monster from list of actors in case the player squished the monster
     let filtered = state.actors.filter(a => a != this);
     if(onTop(player, this)) {
         console.log(player.pos.y + player.size.y - this.pos.y)
         console.log(player.pos.y - (this.pos.y + this.size.y))
+        monsterSquish.play();
         return new State(state.level, filtered, state.status);
     }
     else {
