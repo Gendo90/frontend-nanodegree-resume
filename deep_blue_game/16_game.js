@@ -458,6 +458,8 @@ let background_music = new Howl({
   src: ['./sounds/dubstep_soundtrack.mp3'],
   // autoplay: true,
   loop: true,
+  preload: true,
+  html5: true,
   onplay: function() {fullSongShifts()},
   onload: console.log("loaded"),
   onend: function() {fullSongShifts()}
