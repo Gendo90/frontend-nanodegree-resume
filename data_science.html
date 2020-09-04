@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <!-- Tells the browser what the title of this page should be. -->
+  <title>Data Science Projects</title>
+
+  <!-- Load the page styles. -->
+  <link href="css/style.css" rel="stylesheet">
+
+  <!-- make responsive on mobile devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body class="gray">
+  <div class="centered">
+    <h1>Data Science</h1>
+  </div> <br />
+  <main>
+      <article class="flex-list">
+          <div class="thumbnail">
+              <a href="https://github.com/Gendo90/Kickstarter-Analysis"><img class="pic" src="images/thumbnails/Kickstarter_Projects.JPG" alt="Kickstarter Projects" title="Kickstarter Projects"/></a>
+          </div>
+          <div class="list_desc">
+              <p>This project was completed as part of the <a href="https://bootcamp.berkeley.edu/data/">UC Berkeley Data Analytics Bootcamp</a>,
+                  to help teach us about Excel's capabilities for data analytics, with
+                  business analytics for Kickstarter projects being the focus at the time. A
+                  short analytical report of Kickstarter projects and which types of project
+                  subcategories tend to be successful is included in this repository <a href="https://github.com/Gendo90/Kickstarter-Analysis/blob/master/Kickstarter%20Analysis%20Report.docx">here</a>, with more information
+                  about the particulars of funding levels and individual projects available in the
+                  Excel spreadsheet <a href="https://github.com/Gendo90/Kickstarter-Analysis/blob/master/StarterBook.xlsx">here</a>.
+              </p>
+                  <br />
+                  <p>My code for this Kickstarter Analysis project is available
+                      <a href="https://github.com/Gendo90/2020-Angular-Bootcamp/tree/master/pw">here</a> on Github.</p>
+          </div>
+      </article>
+      <article class="flex-list">
+          <div class="thumbnail">
+              <a href="https://github.com/Gendo90/pandas-challenge"><img class="pic" src="images/thumbnails/Pymoli_Age_Breakdown.JPG" alt="Pymoli Analysis" title="Pymoli Analysis"/></a>
+          </div>
+          <div class="list_desc">
+              <p>This project was completed as part of the <a href="https://bootcamp.berkeley.edu/data/">UC Berkeley Data Analytics Bootcamp</a>,
+                  to help teach us about Pandas' capabilities for data analytics, with
+                  business analytics for a fictional "Heroes of Pymoli" online game providing
+                  the data for this project. The analysis for this project is located
+                  <a href="https://gendo90.github.io/pandas-challenge/">here</a> and is derived from the
+                  Jupyter Notebook <a href="https://github.com/Gendo90/pandas-challenge/blob/master/HeroesOfPymoli/HeroesOfPymoli_starter.ipynb">Heroes of Pymoli</a> in the repo. Pandas is an incredibly useful
+                  package for organizing and cleaning data, and has a great file
+                  I/O functions for reading and writing CSVs and other data files. </p>
+                  <br />
+                  <p>My code for this Heroes of Pymoli analysis project is available
+                      <a href="https://github.com/Gendo90/pandas-challenge/tree/master/HeroesOfPymoli">here</a> on Github.</p>
+          </div>
+      </article>
+      <article class="flex-list">
+          <div class="thumbnail">
+              <a href="https://github.com/Gendo90/python-api-challenge"><img class="pic" src="images/thumbnails/vacation_heatmap.png" alt="Weather Analysis" title="Weather Analysis"/></a>
+          </div>
+          <div class="list_desc">
+              <p>This project was completed to solidify my understanding of
+                  API calls in python to gather data, as part of the <a href="https://bootcamp.berkeley.edu/data/">UC Berkeley Data Analytics Bootcamp</a>.
+                  There were two parts to this project - data collection using the <a href="https://openweathermap.org/api">Open Weather API</a> to get
+                  current weather data for over 500 cities worldwide. The main purpose of this part of the project was to "prove" that the latitudes
+                  closer to the equator are warmer by sampling data uniformly across latitudes and longitudes around the world. The data actually shows
+                  that the tilt of the earth's axis for the Northern hemisphere's summer made temperatures peak at about 23 degrees latitude, as
+                  demonstrated <a href="https://github.com/Gendo90/python-api-challenge/blob/master/output_data/Temp_vs_Latitude_All_Cities.png">here</a>. There
+                  are strong linear fits across the southern and nothern hemispheres, with r-squared values of 0.84 and -0.72, with the fit likely
+                  improving if the data for each line were split by the 23-degree latitude instead of the equator. The WeatherPy notebook detailing these
+                  results more extensively is available <a href="https://gendo90.github.io/python-api-challenge/">here</a>.</p>
+                  <br />
+                  <p>
+                      The second part of the project involved planning a vacation based on certain climate characteristics. These climate characteristics
+                      only matched a few cities around the world at the time of the notebook's creation, and could be adjusted depending on your preferences.
+                      The notebook finds hotels near the ideal climate coordinates using the <a href="https://developers.google.com/places/web-service/overview">Google Places API</a>.
+                      This notebook also plots a <a href="https://github.com/Gendo90/python-api-challenge/blob/master/Images/heatmap.png">heatmap</a> showing the relative humidity levels
+                      across the globe - but note that these levels are not standardized to moisture content in the air which changes for different temperatures.
+                      The VacationPy notebook with the code for these results is available <a href="https://github.com/Gendo90/python-api-challenge/blob/master/starter_code/VacationPy.ipynb">here</a>.
+                  </p>
+              <br />
+              <p>My code for this project is available
+                  <a href="https://github.com/Gendo90/python-api-challenge">here</a> on Github.</p>
+          </div>
+      </article>
+      <article class="flex-list">
+          <div class="thumbnail">
+              <a href="https://gendo90.github.io/Web-Design-Challenge/index.html"><img class="pic" src="images/thumbnails/climate_data_website.JPG" alt="Climate Data App" title="Climate Data App"/></a>
+          </div>
+          <div class="list_desc">
+              <p>This project used data from the above <a href="https://github.com/Gendo90/python-api-challenge">Weather Analysis</a> project,
+                  which was integrated into this <a href="https://gendo90.github.io/Web-Design-Challenge/WebVisualizations/assets/temperature_plot.html">climate data app</a>
+                  as part of the <a href="https://bootcamp.berkeley.edu/data/">UC Berkeley Data Analytics Bootcamp</a>. The project includes plots of temperature, cloudiness, humidity, and
+                  wind speed vs. latitude for the same cities around the globe as the WeatherPy project. Each plot has a brief description and analysis on its webpage. The data table for
+                  all cities is also available as part of this web application. The app uses <a href="https://pages.github.com/">GitHub Pages</a> and <a href="https://getbootstrap.com/">Bootstrap</a> to serve and style the content.
+                  </p>
+                  <br />
+              <p>My code for this project is available
+                  <a href="https://github.com/Gendo90/Web-Design-Challenge">here</a> on Github.</p>
+          </div>
+      </article>
+  </main>
+
+  <div id="lets-connect" class="dark-gray">
+    <h2 class="orange center-text">Let's Connect</h2>
+      <ul id="footerContacts" class="flex-box">
+    </ul>
+  </div>
+  <script src="js/jQuery.js"></script>
+  <script src="js/footerScript.js"></script>
+</body>
+</html>
