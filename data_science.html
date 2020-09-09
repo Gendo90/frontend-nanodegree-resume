@@ -99,6 +99,30 @@
                   <a href="https://github.com/Gendo90/Web-Design-Challenge">here</a> on Github.</p>
           </div>
       </article>
+      <article class="flex-list">
+          <div class="thumbnail">
+              <a href="https://github.com/Gendo90/Crypto-Historical-Prices"><img class="pic" src="images/thumbnails/Cascade_Coins.png" alt="Crypto ETL Project" title="Crypto ETL Project"/></a>
+          </div>
+          <div class="list_desc">
+              <p>This ETL project was planned and developed as
+                  as part of the <a href="https://bootcamp.berkeley.edu/data/">UC Berkeley Data Analytics Bootcamp</a>. The purpose of this project is to enable storage of
+                  1-minute cryptocurrency price data in a SQL database on a computer, to allow comparisons between cryptocurrencies or further analysis of historical price data.
+                  This data is not readily available using APIs or Kaggle, since there is no large, centralized exchange of cryptocurrencies like there is for equities in the for of a
+                  stock exchange, like the NYSE or NASDAQ. This was especially true in the earlier years of cryptocurrencies, and the data here only goes back to about 2014 for Bitcoin and
+                  to about 2016 for Ethereum. The 2016 Ethereum date is close to the start of the modern Ethereum blockchain, so that is not as much an issue as Bitcoin, which dates back to
+                  2009. Using the Coinbase Pro API, historical data for these cryptocurrencies was not available before around 2017, making this project worthwhile to use if planning long-term price
+                  analysis of the two major cryptocurrencies. The initial data sets were downloaded from Kaggle (see the readme for sources), and then patched to a contemporary date when the
+                  project was released using the Coinbase Pro <a href="https://docs.pro.coinbase.com/#get-historic-rates">"candles"</a> API to retrieve historical 1-minute price data for both Bitcoin and Ethereum.
+                  The project uses a Jupyter Notebooks with Python and pandas to load the data into a SQL database containing two tables, one for Bitcoin and one for Ethereum, and uses a separate
+                  notebook to "patch" the data by retrieving up-to-the-minute prices (which may be delayed by about 10 minutes depending on the API results), which are then appended to the SQL
+                  tables for each cryptocurrency. These SQL tables could form the base for further price analysis or even enable intelligent trading algorithms that incorporate historical prices
+                  into their trading strategies.
+                  </p>
+                  <br />
+              <p>My code for this project is available
+                  <a href="https://github.com/Gendo90/Crypto-Historical-Prices">here</a> on Github. Consult the readme if you want to try deploying the project on your own computer!</p>
+          </div>
+      </article>
   </main>
 
   <div id="lets-connect" class="dark-gray">
