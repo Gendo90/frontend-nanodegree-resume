@@ -191,6 +191,10 @@ div.lower_pic_container {
     animation-name: none !important;
 }
 
+.pause_animation {
+    animation-play-state: paused !important;
+}
+
 /* @-webkit-keyframes cycle_thru {
   0% {
       -webkit-transform: initial;

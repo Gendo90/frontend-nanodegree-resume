@@ -23,3 +23,23 @@ nav_bar[0].addEventListener("touchstart", function() {
     }
     lower_flex.style.overflow = "auto";
 })
+
+nav_bar[0].addEventListener("mouseover", function() {
+    for (let link of page_links) {
+        console.log(link)
+        if (!link.classList.contains("pause_animation")) {
+            link.classList.add("pause_animation");
+        }
+    }
+    lower_flex.style.overflow = "none";
+})
+
+nav_bar[0].addEventListener("mouseout", function() {
+    for (let link of page_links) {
+        console.log(link)
+        if (link.classList.contains("pause_animation")) {
+            link.classList.remove("pause_animation");
+        }
+    }
+    lower_flex.style.overflow = "none";
+})
