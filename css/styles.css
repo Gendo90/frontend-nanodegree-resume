@@ -142,43 +142,31 @@ div.lower_pic_container {
 }
 
 @keyframes cycle_thru {
-  0% {
+   0% {
       transform: initial;
   }
   8% {
       transform: initial;
   }
-  16% {
+  18% {
       transform: translateX(-33.3vw);
   }
-  24% {
+  31% {
       transform: translateX(-33.3vw);
   }
-  32% {
+  41% {
       transform: translateX(-66.67vw);
   }
-  40% {
+  58% {
       transform: translateX(-66.67vw);
   }
-  48% {
-      transform: translateX(-100.00vw);
-  }
-  56% {
-      transform: translateX(-100.00vw);
-  }
-  64% {
-      transform: translateX(-66.67vw);
-  }
-  72% {
-      transform: translateX(-66.67vw);
-  }
-  80% {
+  68% {
       transform: translateX(-33.3vw);
   }
-  88% {
+  81% {
       transform: translateX(-33.3vw);
   }
-  96% {
+  91% {
       transform: initial;
   }
   100% {
